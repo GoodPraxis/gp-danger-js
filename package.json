@@ -1,0 +1,36 @@
+{
+  "name": "@goodpraxis/danger-js",
+  "description": "Main Danger JS process",
+  "author": {
+    "name": "Maciej Baron",
+    "email": "maciej@goodpraxis.coop"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GoodPraxis/gp-danger-js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/GoodPraxis/gp-danger-js/issues"
+  },
+  "homepage": "https://github.com/GoodPraxis/gp-danger-js#readme",
+  "keywords": [
+    "danger",
+    "danger-plugin"
+  ],
+  "version": "0.1.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "prepublish-only": "npm run build"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=10.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^12.7.3",
+    "danger": "^9.4.0",
+    "typescript": "^3.9.5"
+  }
+}
