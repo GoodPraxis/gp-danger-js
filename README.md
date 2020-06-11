@@ -25,6 +25,10 @@ Create a `dangerfile.ts` with the following contents:
     checkMergeRequest();
 
 ## Changelog
+### [0.2.1] - 2020-06-11
+#### Changed
+- Updated dependencies
+- Fixed typo
 ### [0.2.0] - 2020-06-11
 #### Added
 - Type declarations

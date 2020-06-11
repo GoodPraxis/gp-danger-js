@@ -93,7 +93,7 @@ const checkMergeRequest = () => {
   if (isLongCommitFound) {
     markdown(`Ideally, the subject line of a commit should be 50 characters or
     less. Additional information can be included in the body of the commit
-    message`);
+    message.`);
   }
 
   if (isWrongCommitFound || isFullStopFound || isLongCommitFound) {
