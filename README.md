@@ -7,6 +7,7 @@ requests by [Good Praxis](https://goodpraxis.coop).
 * Checks if someone is assigned to MR
 * Checks if MR is too big
 * Checks if MR has description
+* Checks whether commits in MR are correct
 
 ## Prerequisites
 Make sure you have read and followed the steps described at the
