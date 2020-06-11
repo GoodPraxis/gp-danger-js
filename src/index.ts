@@ -41,7 +41,7 @@ const checkMergeRequest = () => {
   }
 
   /*
-  * Check if commits are worder properly.
+  * Check if commits are worded properly.
   */
   let isWrongCommitFound = false;
   let isMergeCommitFound = false;

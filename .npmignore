@@ -5,3 +5,4 @@ types/*
 *.test.*
 tsconfig.json
 package-lock.json
+.github/
