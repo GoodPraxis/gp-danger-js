@@ -21,6 +21,17 @@ Install the package:
 Create a `dangerfile.ts` with the following contents:
 
     import checkMergeRequest from '@goodpraxis/danger-js';
-    
+
     checkMergeRequest();
 
+## Changelog
+### [0.2.0] - 2020-06-11
+#### Added
+- Type declarations
+- Commit message checks
+#### Changed
+- Compilation target now set to `es6`
+- Reduced big MR threshold from 20 to 10
+### [0.1.0] - 2020-06-10
+#### Added
+- First version with initial checks
