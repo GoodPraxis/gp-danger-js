@@ -9,6 +9,7 @@ requests by [Good Praxis](https://goodpraxis.coop).
 * Checks if MR has description
 * Checks whether commits in MR look correct
 * Checks `package.json` changes
+* Checks which font files are added
 * Encourages users to optimize images
 
 ## Prerequisites
@@ -28,6 +29,9 @@ Create a `dangerfile.ts` with the following contents:
     checkMergeRequest();
 
 ## Changelog
+### [0.4.0] - 2020-06-12
+#### Added
+- Font file checks
 ### [0.3.0] - 2020-06-12
 #### Added
 - `package.json` check

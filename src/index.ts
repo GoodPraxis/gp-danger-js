@@ -123,13 +123,41 @@ const checkMergeRequest = () => {
   /*
    * Check created files for optimizable images.
    */
-  const optimizableImages = createdFiles.filter(
+  const optimizableImages = createdFiles.some(
     (name) => name.endsWith('.png') || name.endsWith('.gif'));
 
-  if (optimizableImages.length > 0) {
+  if (optimizableImages) {
     message('Image files have been added – make sure they have been optimized');
     markdown(`Make sure that any new images you add have been optimized using
     tools like [ImageOptim](https://imageoptim.com/) or similar.`)
+  }
+
+  /*
+   * Check added font files.
+   */
+  const ttfFiles = createdFiles.some((name) => name.endsWith('.ttf'));
+  const woffFiles = createdFiles.some((name) => name.endsWith('.woff'));
+  const woff2Files = createdFiles.some((name) => name.endsWith('.woff2'));
+  const eotFiles = createdFiles.some((name) => name.endsWith('.eot'));
+
+  if (eotFiles) {
+    warn('Deprecated EOT font file detected');
+    markdown(`EOT font files are not really necessary anymore as they are only
+    for browsers older than IE9. Consider removing them.`);
+  }
+
+  if (ttfFiles && !woffFiles && !woff2Files) {
+    warn('TTF font file detected, but no WOFF or WOFF2 files present');
+    markdown(`This MR seems to be adding TTF font files, but not WOFF or WOFF2
+    formats. Consider adding those formats too, as they are lighter and widely
+    supported by most browsers.`);
+  }
+
+  if (woff2Files && !woffFiles) {
+    warn('WOFF2 font file detected, but no WOFF');
+    markdown(`This MR seems to be adding WOFF2 files, but not WOFF. While a lot
+    of browsers support WOFF2, it is still recommended to include WOFF as
+    well.`);
   }
 };
 
