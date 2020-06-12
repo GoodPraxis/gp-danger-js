@@ -7,7 +7,9 @@ requests by [Good Praxis](https://goodpraxis.coop).
 * Checks if someone is assigned to MR
 * Checks if MR is too big
 * Checks if MR has description
-* Checks whether commits in MR are correct
+* Checks whether commits in MR look correct
+* Checks `package.json` changes
+* Encourages users to optimize images
 
 ## Prerequisites
 Make sure you have read and followed the steps described at the
@@ -26,6 +28,12 @@ Create a `dangerfile.ts` with the following contents:
     checkMergeRequest();
 
 ## Changelog
+### [0.3.0] - 2020-06-12
+#### Added
+- `package.json` check
+- Detecting new images
+#### Changed
+- Copy has been updated
 ### [0.2.1] - 2020-06-11
 #### Changed
 - Updated dependencies
