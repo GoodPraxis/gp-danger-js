@@ -1,7 +1,8 @@
 # gp-danger-js
 
 [Danger JS](https://github.com/danger/danger-js) setup used for GitLab merge
-requests by [Good Praxis](https://goodpraxis.coop).
+requests by [Good Praxis](https://goodpraxis.coop). The main goal is to address
+issues that are not covered in build, test and lint phases.
 
 ## Features
 * Checks if someone is assigned to MR
@@ -10,6 +11,8 @@ requests by [Good Praxis](https://goodpraxis.coop).
 * Checks whether commits in MR look correct
 * Checks `package.json` changes
 * Checks which font files are added
+* Checks if SVG files contain unnecessary data
+* Checks if SVG files accidentally embed bitmaps
 * Encourages users to optimize images
 
 ## Prerequisites
@@ -29,6 +32,9 @@ Create a `dangerfile.ts` with the following contents:
     checkMergeRequest();
 
 ## Changelog
+### [0.5.0] - 2020-06-13
+#### Added
+- SVG file checks
 ### [0.4.0] - 2020-06-12
 #### Added
 - Font file checks
