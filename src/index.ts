@@ -1,6 +1,6 @@
 import { DangerDSLType } from "../node_modules/danger/distribution/dsl/DangerDSL";
 
-declare function warn(message: string): void;
+declare function warn(message: string, file?: string, line?: number): void;
 declare function markdown(message: string): void;
 declare function message(message: string): void;
 
@@ -43,8 +43,8 @@ const checkMergeRequest = () => {
   if (parseInt(changesCount, 10) > BIG_MR_THRESHOLD) {
     warn('Merge Request is quite large');
     markdown(`Your MR size seems relatively large (${changesCount} files).
-    If your Merge Request contains multiple changes, split each into separate MR.
-    This helps creating faster, easier reviews.`);
+    If your Merge Request contains multiple changes, split each into separate
+    MR. This helps creating faster, easier reviews.`);
   }
 
   /*
@@ -158,6 +158,54 @@ const checkMergeRequest = () => {
     markdown(`This MR seems to be adding WOFF2 files, but not WOFF. While a lot
     of browsers support WOFF2, it is still recommended to include WOFF as
     well.`);
+  }
+
+  /*
+   * Check SVG files.
+   */
+  const svgFiles = createdFiles.concat(modifiedFiles).filter(
+    (name) => name.endsWith('.svg'));
+
+  for (let i = 0; i < svgFiles.length; i += 1) {
+    danger.gitlab.utils.fileContents(svgFiles[i]).then((contents) => {
+      if (contents) {
+        let isCommentFound = false;
+        let isInkscapeFound = false;
+        const lines = contents.split('\n');
+        lines.forEach((line, index) => {
+          if (line.includes('data:image')) {
+            warn(
+              `This SVG seems to contain an embedded bitmap image, something
+              that is usually discouraged. Is this on purpose?`,
+              svgFiles[i],
+              index + 1,
+            );
+          }
+
+          if (!isCommentFound && line.includes('<!--')) {
+            isCommentFound = true;
+            warn(
+              `This SVG seems to contain a comment, a sign that it hasn't been
+              optimized properly. Make sure your SVGs are minified and
+              optimized.`,
+              svgFiles[i],
+              index + 1,
+            );
+          }
+
+          if (!isInkscapeFound && line.includes('inkscape:')) {
+            isInkscapeFound = true;
+            warn(
+              `This SVG seems to have been exported from Inkscape without being
+              optimized or minified, which means there is a lot of unnecessary
+              information included. Make sure your SVGs are minified.`,
+              svgFiles[i],
+              index + 1,
+            );
+          }
+        });
+      }
+    });
   }
 };
 
