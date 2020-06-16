@@ -7,6 +7,7 @@ issues that are not covered in build, test and lint phases.
 ## Features
 * Checks if someone is assigned to MR
 * Checks if MR is too big
+* Encourages users to push one commit per MR
 * Checks if MR has description
 * Checks whether commits in MR look correct
 * Checks `package.json` changes
@@ -32,6 +33,9 @@ Create a `dangerfile.ts` with the following contents:
     checkMergeRequest();
 
 ## Changelog
+### [0.6.0] - 2020-06-16
+#### Added
+- Commit number check
 ### [0.5.0] - 2020-06-13
 #### Added
 - SVG file checks
