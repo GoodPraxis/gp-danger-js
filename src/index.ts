@@ -110,6 +110,20 @@ const checkMergeRequest = () => {
   }
 
   /*
+   * Checks number of commits.
+   */
+  if (danger.gitlab.commits.length > 1) {
+    warn('Multiple commits in merge request');
+    markdown(`It's best to to only have one commit per merge request. This is so
+    that we know that each commit passes the test pipeline. Whenever you need to
+    add any changes to your MR, you can amend your existing commit by first
+    staging your changes with \`git add\`, then amending your commit with
+    \`git commit --amend\` (you can keep your old message with \`--no-edit'\`)
+    and finally doing a force push with \`git push origin HEAD -f\`.
+    Alternatively, GitLab allows you to "squash" all your commits upon merging.`);
+  }
+
+  /*
    * Check package.json changes.
    */
   const isPackageChanged = modifiedFiles.includes('package.json');
