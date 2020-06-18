@@ -33,6 +33,10 @@ Create a `dangerfile.ts` with the following contents:
     checkMergeRequest();
 
 ## Changelog
+### [0.6.1] - 2020-06-16
+#### Added
+- Ability to suppress image warning by writing "optimized images" or similar in
+merge request description (see regex)
 ### [0.6.0] - 2020-06-16
 #### Added
 - Commit number check

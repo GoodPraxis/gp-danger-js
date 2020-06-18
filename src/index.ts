@@ -21,6 +21,8 @@ const checkMergeRequest = () => {
     created_files: createdFiles,
   } = danger.git;
 
+  const lowerDescription = description.toLowerCase();
+
   /*
   * Check if description exists.
   */
@@ -140,7 +142,9 @@ const checkMergeRequest = () => {
   const optimizableImages = createdFiles.some(
     (name) => name.endsWith('.png') || name.endsWith('.gif'));
 
-  if (optimizableImages) {
+  const imgRegex = /optimi(s|z)(e(d)?|ing) (image|png|gif)(s)?/;
+
+  if (optimizableImages && !imgRegex.test(lowerDescription)) {
     message('Image files have been added – make sure they have been optimized');
     markdown(`Make sure that any new images you add have been optimized using
     tools like [ImageOptim](https://imageoptim.com/) or similar.`)
