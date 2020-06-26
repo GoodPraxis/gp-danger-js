@@ -33,6 +33,9 @@ Create a `dangerfile.ts` with the following contents:
     checkMergeRequest();
 
 ## Changelog
+### [0.6.2] - 2020-06-26
+#### Changed
+- Moved typescript from devDependencies to dependencies
 ### [0.6.1] - 2020-06-16
 #### Added
 - Ability to suppress image warning by writing "optimized images" or similar in

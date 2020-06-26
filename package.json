@@ -17,7 +17,7 @@
     "danger",
     "danger-plugin"
   ],
-  "version": "0.6.1",
+  "version": "0.6.2",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -28,8 +28,10 @@
   "engines": {
     "node": ">=10.0.0"
   },
-  "devDependencies": {
-    "danger": "^10.2.0",
+  "dependencies": {
     "typescript": "^3.9.5"
+  },
+  "devDependencies": {
+    "danger": "^10.2.0"
   }
 }
