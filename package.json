@@ -32,6 +32,6 @@
     "typescript": "^4.3.5"
   },
   "devDependencies": {
-    "danger": "^10.2.0"
+    "danger": "^11.2.4"
   }
 }
